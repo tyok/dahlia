@@ -114,38 +114,39 @@
                     verticalAlign: "bottom"
                 });
 
-                var boxStyle = {
-                    background: "black",
-                    color: "white",
-                    opacity: 0.5,
-                    padding: "5px",
-                    borderRadius: "3px"
+                var merge = function (array1, array2) {
+                    for(item in array1) {
+                        array2[item] = array1[item];
+                    }
+                    return array2;
                 };
 
-                var fatmawati = new InfoBox({
-                    content: "RS Fatmawati",
-                    boxStyle: boxStyle,
+                var box_options = {
+                    boxStyle: {
+                        background: "black",
+                        color: "white",
+                        opacity: 0.5,
+                        padding: "5px",
+                        borderRadius: "3px"
+                    },
                     disableAutoPan: true,
                     pixelOffset: new google.maps.Size(0,0),
-                    position: new google.maps.LatLng(-6.292909086642901, 106.79554305496216),
                     closeBoxURL: "",
                     isHidden: false,
                     pane: "mapPane",
                     enableEventPropagation: true
-                });
+                };
+
+                var fatmawati = new InfoBox(merge(box_options, {
+                    content: "RS Fatmawati",
+                    position: new google.maps.LatLng(-6.292909086642901, 106.79554305496216),
+                }));
                 fatmawati.open(map.map);
 
-                var lebakBulus = new InfoBox({
+                var lebakBulus = new InfoBox(merge(box_options, {
                     content: "Terminal Lebak Bulus",
-                    boxStyle: boxStyle,
-                    disableAutoPan: true,
-                    pixelOffset: new google.maps.Size(0,0),
                     position: new google.maps.LatLng(-6.289406356769607, 106.77425622940063),
-                    closeBoxURL: "",
-                    isHidden: false,
-                    pane: "mapPane",
-                    enableEventPropagation: true
-                });
+                }));
                 lebakBulus.open(map.map);
             };
         </script>
