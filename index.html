@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <title>Dahlia & Tyok Wedding</title>
+        <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:700,400' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+        }
+
+        h1 {
+            font-family: 'Great Vibes', serif;
+            font-size: 4em;
+            font-weight: normal;
+            margin: 0 auto;
+            padding: 2em 0;
+            position: relative;
+            width: 7em;
+        }
+
+        .banner {
+            background: #eee;
+            margin: 0;
+            text-align: center;
+        }
+
+        .summary {
+            background: black;
+            color: white;
+            font-size: 1.6em;
+            padding: 2em 0 2.5em;
+            font-weight: 700;
+        }
+
+        .summary p {
+            margin: 0;
+        }
+
+        .summary .time, .summary .area {
+            font-size: 0.6em;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .summary .venue {
+            margin-top: 0.5em;
+        }
+
+        #map {
+            width: 100%;
+            height: 600px;
+        }
+
+        .map-overlay {
+            height: 42px;
+            width: 100px;
+            padding: 5px;
+            background: black;
+            color: white;
+            opacity: 0.5;
+            -moz-opacity: 0.8;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+        }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="head banner">
+            <h1>
+                <span class="bride">Dahlia</span> <span class="and">&amp;</span> <span class="groom">Tyok</span>
+            </h1>
+        </div>
+
+        <div class="summary banner">
+            <p class="day">Ahad, 8 Juli 2012</p>
+            <p class="time">11:00&ndash;13:00</p>
+            <p class="venue">Masjid Daarul Adzkaar</p>
+            <p class="area">Karang Tengah, Jakarta Selatan</p>
+        </div>
+
+        <div id="map" class="banner">
+        </div>
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="gmaps.js"></script>
+        <script type="text/javascript" src="infobox_packed.js"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                var map = new GMaps({
+                    div: '#map',
+                    lat: -6.29996386852709,
+                    lng: 106.78560733795166,
+                    scrollwheel: false
+                });
+
+                map.addMarker({
+                    title: "Masjid Daarul Adzkaar",
+                    lat: -6.306276944687572,
+                    lng: 106.78131580352783
+                });
+
+                map.drawOverlay({
+                    lat: -6.306576944687572,
+                    lng: 106.78131580352783,
+                    content: "<div class=\"map-overlay daarul-adzkaar\">Lokasi Acara</div>",
+                    verticalAlign: "bottom"
+                });
+
+                // map.addMarker({
+                //     title: "Terminal Lebak Bulus",
+                //     lat: -6.289406356769607,
+                //     lng: 106.77425622940063,
+                //     infoWindow: {
+                //         content: "<p>Terminal Lebak Bulus</p>"
+                //     }
+                // });
+
+                // map.addMarker({
+                //     title: "RS Fatmawati",
+                //     lat: -6.294909086642901,
+                //     lng: 106.79614305496216,
+                //     infoWindow: {
+                //         content: "<p>Rumah Sakit Fatmawati</p>"
+                //     }
+                // });
+
+                // map.drawOverlay({
+                //     lat: -6.289406356769607,
+                //     lng: 106.77425622940063,
+                //     content: "<div class=\"map-overlay lebak-bulus\">Terminal Lebak Bulus</div>",
+                //     verticalAlign: "bottom"
+                // });
+
+                // map.drawOverlay({
+                //     lat: -6.294909086642901,
+                //     lng: 106.79764305496216,
+                //     content: "<div class=\"map-overlay fatmawati\">RS Fatmawati</div>",
+                //     verticalAlign: "top"
+                // });
+
+                var boxStyle = {
+                    background: "black",
+                    color: "white",
+                    opacity: 0.5,
+                    padding: "5px",
+                    borderRadius: "3px"
+                };
+
+                var fatmawati = new InfoBox({
+                    content: "RS Fatmawati",
+                    boxStyle: boxStyle,
+                    disableAutoPan: true,
+                    pixelOffset: new google.maps.Size(0,0),
+                    position: new google.maps.LatLng(-6.292909086642901, 106.79554305496216),
+                    closeBoxURL: "",
+                    isHidden: false,
+                    pane: "mapPane",
+                    enableEventPropagation: true
+                });
+                fatmawati.open(map.map);
+
+                var lebakBulus = new InfoBox({
+                    content: "Terminal Lebak Bulus",
+                    boxStyle: boxStyle,
+                    disableAutoPan: true,
+                    pixelOffset: new google.maps.Size(0,0),
+                    position: new google.maps.LatLng(-6.289406356769607, 106.77425622940063),
+                    closeBoxURL: "",
+                    isHidden: false,
+                    pane: "mapPane",
+                    enableEventPropagation: true
+                });
+                lebakBulus.open(map.map);
+            };
+        </script>
+
+    </body>
+</html>
