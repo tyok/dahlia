@@ -13,6 +13,8 @@
 
             .banner {
                 background-color: #eee;
+                max-width: 100%;
+                overflow-x: auto;
                 margin: 0 auto;
                 text-align: center;
             }
@@ -166,6 +168,15 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="all.js"></script>
         <script type="text/javascript">
+            var merge = function (array1, array2) {
+                for (item in array1) {
+                    if (array2[item] == undefined) {
+                        array2[item] = array1[item];
+                    }
+                }
+                return array2;
+            };
+
             var showMap = function() {
                 var map = new GMaps({
                     div: '#map',
@@ -179,15 +190,6 @@
                     lat: -6.306276944687572,
                     lng: 106.78131580352783
                 });
-
-                var merge = function (array1, array2) {
-                    for (item in array1) {
-                        if (array2[item] == undefined) {
-                            array2[item] = array1[item];
-                        }
-                    }
-                    return array2;
-                };
 
                 var boxStyle = {
                     background: "black",
